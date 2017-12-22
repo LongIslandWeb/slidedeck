@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+		<script type="text/javascript" src="/lib/js/jquery.min.js"></script>
+		<script type="text/javascript" src="/lib/js/moment.min.js"></script>
+		<script type="text/javascript" src="/lib/js/fullcalendar.js"></script>
+		
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<link rel="stylesheet" href="css/liweb/liweb.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="lib/css/fullcalendar.css">
+		<link rel="stylesheet" href="lib/css/fontawesome-all.min.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+					<section>
+							
+								<h1>Upcoming Events</h1>
+								
+								<div id="calendar"></div>
+								  
+								
+								
+			
+								<h3>Powered by <a href="http://www.longisland.codes">longisland.codes</a>!</h3>
+			
+							</section>
+
+
+				<section data-background-image="/css/liweb/images/homeslide.png">
+					<h1>LI Web</h1>
+					<h2>12/21/2017</h2>
+
+
+				</section>
+
+				<section>
+				
+				<h1>Challenge: Multiples of 3 and 5</h1>
+
+				
+				<p>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9.<br />The sum of these multiples is 23.</p>
+				
+				<p>Find the sum of all the multiples of 3 or 5 below 1000.</p>
+
+				<p><a href="https://projecteuler.net/problem=1">https://projecteuler.net/problem=1</a></p>
+
+				</section>
+
+				<section>
+						
+							<h1>Snap Some Pics</h1>
+							<div style="width: 20%; display: inline-block"><img src="/images/snap1.jpg" /></div>
+							<div style="width: 20%; display: inline-block"><img src="/images/snap2.jpg" /></div>
+							<div style="width: 20%; display: inline-block"><img src="/images/snap3.jpg" /></div>
+		
+							<h2>Post to Meetup!</h2>
+		
+						</section>
+
+						<section>
+								
+									<h1>Like What You See?</h1>
+									<img src="/images/reviews.jpg" />
+									
+									
+				
+									<h2>Leave a Review on Meetup!</h2>
+				
+								</section>
+
+							
+			</div>
+			<div class="footer">
+					<i class="fas fa-wifi"></i> CS_Guest &nbsp;&nbsp; <i class="fab fa-facebook"></i> @LIWeb &nbsp;&nbsp; <i class="fas fa-link"></i> www.liweb.group &nbsp;&nbsp; <i class="fab fa-meetup"></i> meetup.com/li-web
+				</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				transition: 'none',
+				width: 1920,
+				height: 1080,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+
+<script>
+		
+	
+
+		$(document).ready(function() {
+
+    $('#calendar').fullCalendar({
+      header: false,
+	  
+	 
+
+      // customize the button names,
+      // otherwise they'd all just say "list"
+      views: {
+        listDay: { buttonText: 'list day' },
+        listWeek: { buttonText: 'list week' }
+      },
+
+      defaultView: 'listMonth',
+	  defaultDate: '2017-12-12',
+	  aspectRatio: 3,
+      navLinks: false, // can click day/week names to navigate views
+      editable: false,
+	  eventLimit: true, // allow "more" link when too many events
+// 	  eventSources: [
+
+//       // your event source
+//       {
+//           url: 'https://api.liweb.group/events/fullcal', // use the `url` property
+          
+//       }
+
+//       // any other sources...
+
+//   ]
+
+//   })
+      events: [
+        {
+          title: 'All Day Event',
+          start: '2017-12-01'
+        },
+        {
+          title: 'Long Event',
+          start: '2017-12-07',
+          end: '2017-12-10'
+        },
+        {
+          id: 999,
+          title: 'Repeating Event',
+          start: '2017-12-09T16:00:00'
+        },
+        {
+          id: 999,
+          title: 'Repeating Event',
+          start: '2017-12-16T16:00:00'
+        },
+        {
+          title: 'Conference',
+          start: '2017-12-11',
+          end: '2017-12-13'
+        },
+        {
+          title: 'Meeting',
+          start: '2017-12-12T10:30:00',
+          end: '2017-12-12T12:30:00'
+        },
+        {
+          title: 'Lunch',
+          start: '2017-12-12T12:00:00'
+        },
+        {
+          title: 'Meeting',
+          start: '2017-12-12T14:30:00'
+        },
+        {
+          title: 'Happy Hour',
+          start: '2017-12-12T17:30:00'
+        },
+        {
+          title: 'Dinner',
+          start: '2017-12-12T20:00:00'
+        },
+        {
+          title: 'Birthday Party',
+          start: '2017-12-13T07:00:00'
+        },
+        {
+          title: 'Click for Google',
+          url: 'http://google.com/',
+          start: '2017-12-28'
+		},
+		{
+          title: 'Click for Google',
+          url: 'http://google.com/',
+          start: '2018-01-12'
+        }
+      ]
+    });
+
+  });
+
+
+		
+		</script>
+	</body>
+</html>

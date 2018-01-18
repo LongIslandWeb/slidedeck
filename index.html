@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>LI Web</title>
 		<script type="text/javascript" src="/lib/js/jquery.min.js"></script>
 		<script type="text/javascript" src="/lib/js/moment.min.js"></script>
 		<script type="text/javascript" src="/lib/js/fullcalendar.js"></script>
@@ -12,13 +12,15 @@
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
-
-		<link rel="stylesheet" href="css/liweb/liweb.css">
+		<link rel="stylesheet" href="css/theme/flexboxgrid.css">
+		
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
-		<link rel="stylesheet" href="lib/css/fullcalendar.css">
+		
 		<link rel="stylesheet" href="lib/css/fontawesome-all.min.css">
+
+		<link rel="stylesheet" href="css/liweb/liweb.css">
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -33,23 +35,13 @@
 		<div class="reveal">
 			<div class="slides">
 
-					<section>
-							
-								<h1>Upcoming Events</h1>
-								
-								<div id="calendar"></div>
-								  
-								
-								
 			
-								<h3>Powered by <a href="http://www.longisland.codes">longisland.codes</a>!</h3>
-			
-							</section>
 
 
 				<section data-background-image="/css/liweb/images/homeslide.png">
-					<h1>LI Web</h1>
-					<h2>12/21/2017</h2>
+					<h2>LI Web Presents...</h2>
+					<h1>Google Chrome DevTools<br />[Watch & Share]</h1>
+					<h2>01/18/2018</h2>
 
 
 				</section>
@@ -61,11 +53,31 @@
 				
 				<p>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9.<br />The sum of these multiples is 23.</p>
 				
-				<p>Find the sum of all the multiples of 3 or 5 below 1000.</p>
+				<p>Find the sum of all the multiples of 3 or 5 below 1000.</p><p>Feel free to use any language or platform your comfortable with <br /> but you may want to try the Google DevTools Console!</p>
 
 				<p><a href="https://projecteuler.net/problem=1">https://projecteuler.net/problem=1</a></p>
 
 				</section>
+
+				<section>
+						<h1>233,168</h1>	
+					<h2>Solution</h2>
+
+
+						<pre><code data-trim data-noescape>
+{
+  let sum=0; 
+  for(let i=0; i<1000; i++) {
+    if(i%3 === 0 || i%5 === 0) {
+      sum += i;
+    }
+  }
+}
+</code></pre>
+
+<h3>Anyone have a different solution they'd like to share?</h3>
+		
+						</section>
 
 				<section>
 						
@@ -80,15 +92,165 @@
 
 						<section>
 								
-									<h1>Like What You See?</h1>
-									<img src="/images/reviews.jpg" />
-									
-									
-				
-									<h2>Leave a Review on Meetup!</h2>
-				
-								</section>
+								<h1>Pizza</h1>
+					
+					
+								<iframe src="https://giphy.com/embed/10kxE34bJPaUO4" width="380" height="380" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+								
+					<h3>If you have a few bucks to chip in, great!</h3>
+					<p>If not, also great. Either way, please help yourselves and don't leave me with leftovers =)</p><p>Know a company who may want to sponsor pizza for future talks? Talk to me after</p>
+			
+			
+							</section>
 
+				
+
+
+								<section>
+							
+										<h1>Upcoming LI Web Events</h1>
+			
+								<div id="events-liweb" class="event-grid"></div>
+										
+										
+											
+										<script>
+											$.getJSON( "https://api.liweb.group/events/", function( data ) {
+			var items = [];
+			
+			
+			var str = '';
+			var city = '';
+			var iEventCounter = 0;
+			for(var i=0; i<data.length; i++) {
+			
+				var event = data[i]
+			
+				if(event.group.name.toUpperCase() == "LI WEB MEETUP") {
+				
+					if(iEventCounter % 2 == 0) {
+						str += '<div class="row">';
+					}
+			
+					if(event.venue && event.venue.city) {
+						city = event.venue.city;
+					}
+					else {
+						city = 'TBA';
+					}
+					
+					str += '<div class="event-cell col-xs-12 col-md-6 col-lg-6"><div class="box"><h4>' + moment(event.time).format("MMM Do h:mmA") + '</h4><h2>' + event.name + '</h2><h5>' + city + '</h5></div></div>';
+			
+					if(iEventCounter % 2 == 1) {
+						str += '</div>';
+					}
+			
+					iEventCounter++;
+			
+				}
+			
+			
+				if(iEventCounter == 6) {
+					i=data.length;
+				}
+			}
+			
+			
+			$( "#events-liweb").html(str);
+				
+			});
+										</script>
+										
+					
+										<h3>Powered by <a href="http://www.longisland.codes">longisland.codes</a>!</h3>
+					
+									</section>
+			
+			
+								<section>
+										
+											<h1>Other Meetups</h1>
+			
+									<div id="events-other" class="event-grid"></div>
+											
+											
+												
+											<script>
+												$.getJSON( "https://api.liweb.group/events/", function( data ) {
+				var items = [];
+				
+				var str = '';
+				var city = '';
+				var iEventCounter = 0;
+				for(var i=0; i<data.length; i++) {
+				
+					var event = data[i]
+			
+					if(event.group.name.toUpperCase() != "LI WEB MEETUP") {
+					
+						if(iEventCounter % 3 == 0) {
+							str += '<div class="row">';
+						}
+			
+						if(event.venue && event.venue.city) {
+							city = event.venue.city;
+						}
+						else {
+							city = 'TBA';
+						}
+						
+						str += '<div class="event-cell col-xs-12 col-md-4 col-lg-4"><div class="box"><h4>' + moment(event.time).format("MMM Do h:mmA") + '</h4><h3>' + event.group.name + '</h3><h2>' + event.name + '</h2><h5>' + city + '</h5></div></div>';
+			
+						if(iEventCounter % 3 == 2) {
+							str += '</div>';
+						}
+			
+						iEventCounter++;
+			
+					}
+			
+			
+					if(iEventCounter == 9) {
+						i=data.length;
+					}
+				}
+			 
+			 
+				$( "#events-other").html(str);
+					
+			});
+											</script>
+											
+						
+											<h3>Powered by <a href="http://www.longisland.codes">longisland.codes</a>!</h3>
+						
+										</section>
+
+									
+
+										<section>
+								
+												<h1>Introductions</h1>
+									
+									
+									<iframe src="https://giphy.com/embed/q9MrLvTUWjrX2" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+												
+									<p>Who you are...Where your from...<br />Describe your web experience or a recent projects...<br />Anything specific your hoping to learn or see tonight?</p>
+							
+							
+											</section>
+
+
+											<section>
+								
+													<h1>Like What You See?</h1>
+													<img src="/images/reviews.jpg" />
+													
+													
+								
+													<h2>Leave a Review on Meetup!</h2>
+								
+												</section>
 							
 			</div>
 			<div class="footer">
@@ -116,110 +278,5 @@
 			});
 		</script>
 
-<script>
-		
-	
-
-		$(document).ready(function() {
-
-    $('#calendar').fullCalendar({
-      header: false,
-	  
-	 
-
-      // customize the button names,
-      // otherwise they'd all just say "list"
-      views: {
-        listDay: { buttonText: 'list day' },
-        listWeek: { buttonText: 'list week' }
-      },
-
-      defaultView: 'listMonth',
-	  defaultDate: '2017-12-12',
-	  aspectRatio: 3,
-      navLinks: false, // can click day/week names to navigate views
-      editable: false,
-	  eventLimit: true, // allow "more" link when too many events
-// 	  eventSources: [
-
-//       // your event source
-//       {
-//           url: 'https://api.liweb.group/events/fullcal', // use the `url` property
-          
-//       }
-
-//       // any other sources...
-
-//   ]
-
-//   })
-      events: [
-        {
-          title: 'All Day Event',
-          start: '2017-12-01'
-        },
-        {
-          title: 'Long Event',
-          start: '2017-12-07',
-          end: '2017-12-10'
-        },
-        {
-          id: 999,
-          title: 'Repeating Event',
-          start: '2017-12-09T16:00:00'
-        },
-        {
-          id: 999,
-          title: 'Repeating Event',
-          start: '2017-12-16T16:00:00'
-        },
-        {
-          title: 'Conference',
-          start: '2017-12-11',
-          end: '2017-12-13'
-        },
-        {
-          title: 'Meeting',
-          start: '2017-12-12T10:30:00',
-          end: '2017-12-12T12:30:00'
-        },
-        {
-          title: 'Lunch',
-          start: '2017-12-12T12:00:00'
-        },
-        {
-          title: 'Meeting',
-          start: '2017-12-12T14:30:00'
-        },
-        {
-          title: 'Happy Hour',
-          start: '2017-12-12T17:30:00'
-        },
-        {
-          title: 'Dinner',
-          start: '2017-12-12T20:00:00'
-        },
-        {
-          title: 'Birthday Party',
-          start: '2017-12-13T07:00:00'
-        },
-        {
-          title: 'Click for Google',
-          url: 'http://google.com/',
-          start: '2017-12-28'
-		},
-		{
-          title: 'Click for Google',
-          url: 'http://google.com/',
-          start: '2018-01-12'
-        }
-      ]
-    });
-
-  });
-
-
-		
-		</script>
 	</body>
 </html>

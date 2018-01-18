@@ -44,9 +44,53 @@
   #calendar {
       width: 80%;
       height: 620px;
-      overflow: scroll;
       background-color: #fff;
       margin: 0 auto;
       font-size: 0.7em;
       color:#000;
+  }
+
+  .fc-view, .fc-view-container {
+    height: 620px;
+    max-height: 620px;
+  }
+
+
+  .event-grid {
+    
+    width: 80%;
+    height: 660px;
+    margin: 0 auto !important;
+    text-align: left;
+
+  }
+  
+  .event-grid h2{
+    font-size: 0.6em;
+    margin-bottom: 0;
+    
+  }
+
+  .event-grid h3 {
+    font-size: 0.5em;
+    margin-bottom: 0;
+    color: #33ccff;
+  }
+
+  .event-grid h4 {
+    font-size: 0.7em;
+    margin-bottom: 0;
+    color: #E57252;
+    
+  }
+
+  .event-grid h5 {
+    font-size: 0.7em;
+    margin-bottom: 0;
+    color: #E94F64;
+    
+  }
+
+  .event-grid .row {
+    padding: 0.75em 0;
   }

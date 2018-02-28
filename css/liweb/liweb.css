@@ -94,3 +94,11 @@
   .event-grid .row {
     padding: 0.75em 0;
   }
+
+  a.footer-link, a.footer-link:visited, a.footer-link:hover, a.footer-link:active {
+    color: #fff;
+  }
+
+  a.footer-link:active,  a.footer-link:hover {
+    text-decoration: underline;
+  }
